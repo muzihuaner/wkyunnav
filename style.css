@@ -1,0 +1,242 @@
+@import url("https://fonts.googleapis.com/css?family=Quicksand:400,500,600&display=swap");
+.font {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 600;
+}
+
+:root {
+  --mainWhite: #E0E0E0;
+  --buttonWhite:-2px -2px 5px rgba(255,255,255,1),
+                  3px 3px 5px rgba(0,0,0,.07);
+  --buttonWhiteActive:inset -2px -2px 5px rgba(255,255,255,1),
+                      inset 3px 3px 5px rgba(0,0,0,.07);
+  --iconWhiteVer:#6a9bd8;
+  --mainDark:#222;
+  --buttonDark:inset -2px -2px 5px rgba(0,0,0,0.5),
+                     inset 3px 3px 5px rgba(255,255,255,.07);
+  --buttonDarkActive:-2px -2px 5px rgba(0,0,0,0.5),
+                  3px 3px 5px rgba(255,255,255,.07);
+  --iconDarkVer:#8d948d;
+  --iconDarkVerActive:0 0 10px rgba(33,156,243,1),
+                       0 0 10px rgba(33,156,243,1);
+  --iconDarkLine:0 0 10px rgba(33,156,243,.5),
+    0 0 20px rgba(33,156,243,.5),
+    0 0 30px rgba(33,156,243,.5),
+    inset 0 0 10px rgba(33,156,243,.5), ;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column-reverse;
+  transition: 0.5s;
+
+}
+body.neumorphism {
+  background: var(--mainWhite);
+}
+body.neumorphism .switch {
+  background: var(--mainWhite);
+  box-shadow: var(--buttonWhite);
+}
+body.neumorphism .switch input[type=checkbox] ~ .icon-box {
+  background: var(--mainWhite);
+  box-shadow: var(--buttonWhite);
+}
+body.neumorphism .switch input[type=checkbox] ~ .icon-box img {
+  color: var(--iconWhiteVer);
+}
+body.neumorphism .switch input[type=checkbox]:checked ~ .icon-box {
+  box-shadow: var(--buttonWhiteActive);
+}
+body.dark {
+  background: var(--mainDark);
+}
+body.dark .switch {
+  background: var(--mainDark);
+  box-shadow: var(--buttonDark);
+}
+body.dark .switch input[type=checkbox] ~ .icon-box {
+  background: var(--mainDark);
+  box-shadow: var(--buttonDark);
+}
+body.dark .switch input[type=checkbox] ~ .icon-box p {
+  color: var(--iconDarkVer);
+}
+body.dark .switch input[type=checkbox]:checked ~ .icon-box {
+  box-shadow: var(--buttonDarkActive);
+}
+body.dark .switch input[type=checkbox]:checked ~ .icon-box p {
+  text-shadow: var(--iconDarkVerActive);
+  color: white;
+}
+
+body.dark .title {
+    color: white;
+    background-color: #17181b;
+    box-shadow: var(--mainDark);
+  }
+body.dark .title a{
+    color: white;
+    text-decoration:none;
+}
+
+.switch {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  border-radius: 10px;
+  padding: 10px;
+  width: 80%;
+  height: auto;
+  margin-bottom: 20px;
+}
+.switch__box {
+  position: relative;
+  list-style: none;
+  text-align: center;
+  margin: 15px;
+}
+.switch__box label {
+  position: relative;
+}
+.switch__box label input[type=checkbox] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+.switch__box label input[type=checkbox] ~ .icon-box {
+  width: 200px;
+  height: 110px;
+  /* display: flex; */
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+.switch__box label input[type=checkbox] ~ .icon-box img {
+  width: 70px;
+  transition: width 0.2s ease-out;
+  margin-bottom: 3px;
+}
+.switch__box label input[type=checkbox] ~ .icon-box p {
+  color: #222;
+  font-weight: bold;
+  text-align: center;
+  position:0 auto;
+  padding-top: 10px;
+  padding-bottom: 2px;
+}
+.switch__box label input[type=checkbox]:checked ~ .icon-box img {
+  transform: scale(0.95);
+}
+
+.colormode {
+  transform-style: preserve-3d;
+  perspective: 200px;
+  height: 40px;
+  border-radius: 40px;
+  margin-bottom: 20px;
+  margin-right: 0px;
+  position:fixed;
+  top:20px;
+  right:40px;
+}
+.colormode input[type=checkbox] {
+  width: 80px;
+  height: 30px;
+  margin: 0;
+  -webkit-appearance: none;
+  outline: none;
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+
+.colormode input[type=checkbox] ~ span {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  pointer-events: none;
+  transform-style: preserve-3d;
+  
+}
+.colormode input[type=checkbox] ~ span:nth-of-type(1) {
+  left: 0;
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
+  background: var(--mainWhite);
+}
+.colormode input[type=checkbox] ~ span:nth-of-type(1)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #464343, #17181b);
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
+  transform-origin: right;
+  transition: 1s;
+  backface-visibility: hidden;
+}
+.colormode input[type=checkbox] ~ span:nth-of-type(2) {
+  color: var(--mainWhite);
+  right: 0;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  background: var(--mainDark);
+}
+.colormode input[type=checkbox] ~ span:nth-of-type(2)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #fefefe, #f2f2f2);
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  transform-origin: left;
+  transition: 1s;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+}
+.colormode input[type=checkbox]:checked ~ span:nth-of-type(1)::before {
+  transform: rotateY(180deg);
+}
+.colormode input[type=checkbox]:checked ~ span:nth-of-type(2)::before {
+  transform: rotateY(360deg);
+}
+.title{
+    width: 80%;
+    height: 50px;
+    font-size: 30px;
+    font-family: '黑体';
+    text-align: center;
+    line-height:50px;
+    margin: 0 auto;
+    margin-top: 60px;
+    margin-bottom: 20px;
+    background-color: #6a9bd8;
+    border-radius: 10px;
+    background: #e0e0e0;
+    box-shadow: var(--buttonWhite);
+}
+.title2{
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 10px;
+}
+.title2 a{
+    color: #17181b;
+    text-decoration:none;
+}
