@@ -118,9 +118,10 @@ body.dark .title a{
   border-radius: 4px;
 }
 .switch__box label input[type=checkbox] ~ .icon-box img {
-  width: 70px;
-  transition: width 0.2s ease-out;
-  margin-bottom: 3px;
+    width: 50px;
+    transition: width 0.2s ease-out;
+    margin-bottom: 5px;
+    padding-top: 10px;
 }
 .switch__box label input[type=checkbox] ~ .icon-box p {
   color: #222;
